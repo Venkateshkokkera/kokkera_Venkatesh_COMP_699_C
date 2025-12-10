@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Dashboard</h2>
+
+  <div class="mb-3">
+    <a class="btn btn-success me-1" href="{% url 'health:health_create' %}">Log today's health</a>
+    <a class="btn btn-outline-secondary me-1" href="{% url 'health:health_list' %}">All records</a>
+    <a class="btn btn-outline-info me-1" href="{% url 'health:risk_report' %}">Risk report</a>
+    <a class="btn btn-outline-dark" href="{% url 'health:export_csv' %}">Export CSV</a>
+    <a class="btn btn-outline-dark" href="{% url 'health:export_pdf' %}">Export PDF</a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <h5>Latest records (last 14)</h5>
+      <table class="table table-sm">
+        <thead><tr><th>Date</th><th>HR</th><th>BMI</th><th>Sleep</th><th>Actions</th></tr></thead>
+        <tbody>
+          {% for r in records %}
+            <tr>
+              <td>{{ r.date }}</td>
+              <td>{{ r.heart_rate }}</td>
+              <td>{{ r.bmi }}</td>
+              <td>{{ r.sleep_hours }}</td>
+              <td>
+                <a class="btn btn-sm btn-outline-primary" href="{% url 'health:health_update' r.pk %}">Edit</a>
+                <a class="btn btn-sm btn-outline-danger" href="{% url 'health:health_delete' r.pk %}">Delete</a>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="5">No data yet</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-4">
+      <h5>Predictive result</h5>
+      <p>Risk: <strong>{{ risk.risk_level }}</strong></p>
+      <p>Score: <strong>{{ risk.score }}</strong></p>
+      <ul>
+        {% for d in risk.details %}
+          <li>{{ d }}</li>
+        {% endfor %}
+      </ul>
+
+      <h5 class="mt-4">Notifications</h5>
+      <ul class="list-group">
+        {% for n in notifications %}
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div>
+              <strong>{{ n.created_at|date:"Y-m-d H:i" }}</strong><br>
+              {{ n.message }}
+            </div>
+            {% if not n.is_read %}
+              <a class="btn btn-sm btn-outline-success" href="{% url 'health:mark_notification_read' n.pk %}">Mark read</a>
+            {% else %}
+              <span class="badge bg-secondary">Read</span>
+            {% endif %}
+          </li>
+        {% empty %}
+          <li class="list-group-item">No notifications</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endblock %}

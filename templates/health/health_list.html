@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>All Health Records</h2>
+  <table class="table">
+    <thead><tr><th>Date</th><th>HR</th><th>BMI</th><th>Sleep</th><th>Notes</th><th>Actions</th></tr></thead>
+    <tbody>
+      {% for r in records %}
+        <tr>
+          <td>{{ r.date }}</td>
+          <td>{{ r.heart_rate }}</td>
+          <td>{{ r.bmi }}</td>
+          <td>{{ r.sleep_hours }}</td>
+          <td>{{ r.notes|default:"" }}</td>
+          <td>
+            <a class="btn btn-sm btn-outline-primary" href="{% url 'health:health_update' r.pk %}">Edit</a>
+            <a class="btn btn-sm btn-outline-danger" href="{% url 'health:health_delete' r.pk %}">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="6">No records</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

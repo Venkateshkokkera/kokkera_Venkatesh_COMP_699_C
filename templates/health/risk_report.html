@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Risk Report</h2>
+  <p>Risk Level: <strong>{{ result.risk_level }}</strong></p>
+  <p>Score: <strong>{{ result.score }}</strong></p>
+  <ul>
+    {% for d in result.details %}
+      <li>{{ d }}</li>
+    {% endfor %}
+  </ul>
+  <a class="btn btn-outline-dark" href="{% url 'health:export_pdf' %}">Download PDF</a>
+{% endblock %}

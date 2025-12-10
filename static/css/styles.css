@@ -1,0 +1,128 @@
+/* --- Global Styles --- */
+body {
+    background: #f0f5ff;
+    font-family: "Segoe UI", Roboto, sans-serif;
+    padding-bottom: 60px;
+    color: #333;
+}
+
+h1, h2, h3, h4 {
+    color: #2b5ea8;
+    font-weight: 600;
+}
+
+/* ===============================
+   NAVBAR FIX — TEXT ALWAYS VISIBLE
+   =============================== */
+.navbar {
+    background: #ffffff !important;
+    border-bottom: 1px solid #d9e3f2;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #1d4e89 !important;
+}
+
+/* FIX: Make all navbar links visible */
+.navbar-nav .nav-link,
+.navbar-text {
+    color: #1d4e89 !important;   /* Dark blue visible on white */
+    font-weight: 500;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-text:hover {
+    color: #164070 !important;
+    text-decoration: underline;
+}
+
+/* Buttons in navbar */
+.navbar .btn {
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+/* Container width */
+.container {
+    max-width: 1100px;
+}
+
+/* --- Table Styling --- */
+table {
+    background: #fff;
+    font-size: 0.95rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table thead {
+    background: #e6f0fa;
+    color: #1d4e89;
+    font-weight: 600;
+}
+
+table tbody tr:hover {
+    background: #f2f8ff;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+    background: #2b6cb0;
+    border-color: #2b6cb0;
+}
+.btn-primary:hover {
+    background: #245f9a;
+}
+
+.btn-danger {
+    background: #e55353;
+    border-color: #e55353;
+}
+.btn-danger:hover {
+    background: #c84343;
+}
+
+/* --- Forms --- */
+form {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e1e8ef;
+}
+
+form label {
+    font-weight: 600;
+    color: #1d4e89;
+}
+
+form input, form textarea, form select {
+    border-radius: 6px !important;
+    border: 1px solid #c9d7e8 !important;
+}
+
+form input:focus, textarea:focus {
+    border-color: #2b6cb0 !important;
+    box-shadow: 0 0 3px rgba(43, 108, 176, 0.4) !important;
+}
+
+/* --- Dashboard Cards --- */
+.dashboard-box {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #d9e3f2;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Notifications */
+.list-group-item {
+    border-radius: 6px !important;
+    margin-bottom: 5px;
+}
+
+/* Footer */
+footer {
+    color: #5a6e85;
+    text-align: center;
+}
